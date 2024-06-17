@@ -24,7 +24,7 @@ body > div >  ._main_c1lps_1 > ._container_sg7m1_1 > ._paper_sg7m1_6:first-child
     content: "Login";
     text-align: center;
     display: block;
-    color: var(--kapsiki-gray);
+    color: var(--bs-gray);
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 2.5rem;
@@ -58,19 +58,19 @@ body > div >  ._main_c1lps_1 > ._container_sg7m1_1 > ._paper_sg7m1_6 {
 
 /*The form input*/
 body > div >  ._main_c1lps_1 > ._container_sg7m1_1 > ._paper_sg7m1_6 > ._w-100_cc0ym_7991 > ._input_1vz10_1 {
-    background-color: var(--kapsiki-white);
+    background-color: var(--bs-white);
     border-radius: 5px;
     height: 45px;
   }
 
   body > div >  ._main_c1lps_1 > ._container_sg7m1_1 > ._paper_sg7m1_6 > ._w-100_cc0ym_7991 > ._input_1vz10_1 {
-    --ax-input-focus-border: var(--ax-theme-input-focus-border, 1px solid var(--kapsiki-orange));
+    --ax-input-focus-border: var(--ax-theme-input-focus-border, 1px solid var(--bs-orange));
   }
 
 /*Form checkbox*/
   ._input_1vz10_1:checked {
-    background-color: var(--kapsiki-orange)!important;
-    border-color: var(--kapsiki-orange)!important;
+    background-color: var(--bs-orange)!important;
+    border-color: var(--bs-orange)!important;
 }
 
   ._input_1vz10_1:not([type=range]):focus {
@@ -81,7 +81,7 @@ body > div >  ._main_c1lps_1 > ._container_sg7m1_1 > ._paper_sg7m1_6 > ._w-100_c
 
 /*The form button*/
 body > div >  ._main_c1lps_1 > ._container_sg7m1_1 > ._paper_sg7m1_6 > ._w-100_cc0ym_7991 > ._btn_cc0ym_2551 {
-    background-color: var(--kapsiki-orange);
+    background-color: var(--bs-orange);
     font-size: 1rem;
     font-weight: bold;
     border: none;
@@ -90,7 +90,7 @@ body > div >  ._main_c1lps_1 > ._container_sg7m1_1 > ._paper_sg7m1_6 > ._w-100_c
   }
 
   body > div >  ._main_c1lps_1 > ._container_sg7m1_1 > ._paper_sg7m1_6 > ._w-100_cc0ym_7991 > ._btn_cc0ym_2551:hover {
-    background-color: var(--kapsiki-gray);
+    background-color: var(--bs-gray);
   }
 /*The form button*/
 
