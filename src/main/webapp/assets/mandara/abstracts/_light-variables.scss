@@ -9,6 +9,7 @@
     --bs-pink: #d63384;
     --bs-red: #dc3545;
     --bs-orange: #eb5e28;
+    --bs-orange-dark: #e74200;
     --bs-orange-light: #fcc9b5;
     --bs-yellow: #ffc107;
     --bs-green: #198754;
@@ -121,5 +122,7 @@
     --bs-form-valid-border-color: #198754;
     --bs-form-invalid-color: #dc3545;
     --bs-form-invalid-border-color: #dc3545;
+
+    --ax-theme-nav-menu-item-active-bg: var(--bs-orange)!important;
   }
   

@@ -6,18 +6,33 @@
 According to Carbon design rule, we don't center text in a button, even if the button is wide.
 https://carbondesignsystem.com/components/button/usage/
 */
-.-esm-login__login__continueButton___VnN\+0 {
-  background-color: var(--kapsiki-01);
-  color: var(--bs-white);
-  font-size: 1.2em;
-  font-family: var(--title-font-family);
-  font-weight: bold;
-  border-radius: 5px;
-  text-align: center;
-  border: none;
-  padding: 14px 15px 14px 15px;
+:root, [data-bs-theme="light"] {
+  ._btn-primary_cc0ym_3171 {
+    --bs-btn-color: #ffffff;
+    --bs-btn-bg: var(--bs-orange); 
+    --bs-btn-border-color: var(--bs-orange);
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-bg: var(--bs-orange-dark);
+    --bs-btn-hover-border-color: var(--bs-orange-dark);
+    --bs-btn-focus-shadow-rgb: 130, 126, 251;
+    --bs-btn-active-color: #ffffff;
+    --bs-btn-active-bg: var(--bs-orange-dark);
+    --bs-btn-active-border-color: var(--bs-orange-dark);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(var(--bs-black-rgb, 0, 0, 0), .125);
+    --bs-btn-disabled-color: #ffffff;
+    --bs-btn-disabled-bg: var(--bs-orange-light);
+    --bs-btn-disabled-border-color: var(--bs-orange-light);
+  }
+
+  ._btn-outline-primary_cc0ym_3307 {
+    --bs-btn-color: var(--bs-orange);
+    --bs-btn-border-color: var(--bs-orange);
+    --bs-btn-hover-bg: var(--bs-orange-dark);
+    --bs-btn-hover-border-color: var(--bs-orange-dark);
+    --bs-btn-active-bg: var(--bs-orange-dark);
+    --bs-btn-active-border-color: var(--bs-orange-dark);
+    --bs-btn-disabled-color: var(--bs-orange-light);
+    --bs-btn-disabled-border-color: var(--bs-orange-light);
 }
 
-.-esm-login__login__continueButton___VnN\+0:hover {
-  background-color: var(--bs-gray);
-}
+  }
