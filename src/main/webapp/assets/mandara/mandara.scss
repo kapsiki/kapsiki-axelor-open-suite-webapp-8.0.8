@@ -2,7 +2,9 @@
 
 // 1. Configuration and helpers
 @import
-'abstracts/variables';
+'abstracts/_light-variables',
+'abstracts/_dark-variables';
+//'abstracts/theme-root',
   //'abstracts/functions',
   //'abstracts/mixins';
 
@@ -25,11 +27,18 @@
 // 5. Components
  @import
   'components/sidebar',
-  'components/header';
+  'components/header',
+  'components/button',
+  'components/select',
+  'components/icon',
+  'components/link',
+  'components/breadcumb',
+  'components/calendar',
+  'components/input';
    
 // 6. Page-specific styles
 @import
-'pages/login';
+'pages/login'; 
  
 // 7. Themes
 // @import

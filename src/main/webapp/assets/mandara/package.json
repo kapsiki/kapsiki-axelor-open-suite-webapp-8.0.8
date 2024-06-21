@@ -12,7 +12,7 @@
     "Axelor"
   ],
   "scripts": {
-    "watch": "node-sass mandara-light.scss mandara-light.css -w"
+    "watch": "node-sass mandara.scss theme.css -w"
   },
   "author": "kapsiki digital solutions",
   "license": "Apache 2.0",

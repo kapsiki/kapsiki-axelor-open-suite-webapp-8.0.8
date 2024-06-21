@@ -1,0 +1,12 @@
+[data-bs-theme="light"] {
+//Add an orange line at the bottom of the header
+._header_itpsy_24 {
+    border-bottom: 1px solid var(--bs-orange-light); 
+  }
+
+//Active tab indicator
+._indicator_33jrv_111 {
+  background-color: var(--bs-orange);
+}
+
+}
