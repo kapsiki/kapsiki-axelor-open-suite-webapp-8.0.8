@@ -4,7 +4,7 @@ pipeline {
     stages {
        stage('Git Clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/kapsiki/kapsiki-axelor-open-suite-webapp-8.0.8.git'
+                git branch: 'Devops', url: 'https://github.com/kapsiki/kapsiki-axelor-open-suite-webapp-8.0.8.git'
                }
             }
 
