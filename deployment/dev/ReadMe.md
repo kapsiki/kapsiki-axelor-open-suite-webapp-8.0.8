@@ -1,92 +1,96 @@
+# Kapsiki Axelor ERP with PostgreSQL
 
-# Getting Axelor Running in Docker
-
-This guide will help you set up Axelor using Docker. Axelor is an open-source ERP and CRM solution that can be easily deployed with Docker.
+This repository contains a Docker Compose setup for the Kapsiki Axelor ERP application, backed by a PostgreSQL database. This setup allows for easy deployment and management of the application and its database in a containerized environment.
 
 ## Prerequisites
 
-- Docker installed on your machine (version 19.03 or later).
-- Docker Compose installed (version 1.27 or higher).
+- Docker: Ensure you have Docker installed on your machine.
+- Docker Compose: Make sure you have Docker Compose installed.
 
-## Quick Start
+## Getting Started
 
-1. **Clone the Repository**
+### Clone the Repository
 
-   ```bash
-   git clone https://github.com/kapsiki/kapsiki-axelor-open-suite-webapp.git
-   cd kapsiki-axelor-open-suite-webapp-8.0.8/deployment/dev
-   ```
+```bash
+git clone https://github.com/kapsiki/kapsiki-axelor-open-suite-webapp-8.0.8.git
+cd kapsiki-axelor-open-suite-webapp-8.0.8/deployment/dev
+```
 
-2. **Create a `.env` File**
+### Configuration
 
-   Copy the example environment file and customize it as needed:
+Before starting the services, you may want to customize the environment variables in the `docker-compose.yml` file:
 
-   ```bash
-   cp .env.example .env
-   ```
+- **POSTGRES_DB**: The name of the PostgreSQL database.
+- **POSTGRES_USER**: The username for the PostgreSQL database.
+- **POSTGRES_PASSWORD**: The password for the PostgreSQL user.
 
-3. **Build and Start the Containers**
+### Starting the Services
 
-   If you are using Docker Compose, run:
+To start the application and database, run:
 
-   ```bash
-   docker-compose -f dev.docker-compose.yml up -d
-   ```
+```bash
+docker-compose -f dev.docker-compose.yml up -d
+```
 
-   To build the images without using the cache (optional):
+This command will launch the services in detached mode.
 
-   ```bash
-   docker-compose -f dev.docker-compose.yml  build --no-cache
-   ```
+### Accessing the Application
 
-4. **Access Axelor**
+Once the services are up, you can access the Axelor ERP application in your web browser at:
 
-   Once the containers are running, you can access Axelor in your web browser at:
+```
+http://localhost:8080/
+```
 
-   ```
-   http://localhost:8080/kapsiki-erp
-   ```
+### Stopping the Services
 
-   The default credentials are:
-   - **Username:** admin
-   - **Password:** admin
-
-## Stopping the Containers
-
-To stop the running containers, use:
+To stop the services, run:
 
 ```bash
 docker-compose -f dev.docker-compose.yml down
 ```
 
-## Customizing Your Setup
+This command will stop and remove the containers.
 
-You can customize the configuration by modifying the `.env` file. Here are some common variables you might want to change:
+### Viewing Logs
 
-- `DB_NAME`: Name of the database.
-- `DB_USER`: Username for the database.
-- `DB_PASSWORD`: Password for the database.
+To view the logs of the Axelor service, use:
+
+```bash
+docker-compose logs axelor
+```
+
+For PostgreSQL logs, use:
+
+```bash
+docker-compose logs db
+```
+
+## Health Checks
+
+The Docker Compose setup includes health checks for both services:
+
+- **PostgreSQL**: Checks if the database is ready to accept connections.
+- **Axelor**: Checks if the application is reachable.
 
 ## Troubleshooting
 
-- If you encounter any issues, check the logs with:
+If the Axelor container keeps restarting, check the logs for error messages:
 
-  ```bash
-  docker-compose logs
-  ```
+```bash
+docker-compose logs axelor
+```
 
-- Ensure Docker is running and you have sufficient resources allocated.
+Common issues may include:
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+- Database connection problems
+- Misconfigured environment variables
+- Missing application properties
 
 ## Contributing
 
-If you would like to contribute to the project, please fork the repository and submit a pull request.
+If you'd like to contribute to this project, please fork the repository and submit a pull request.
 
-## Support
+### Summary
 
-For further assistance, please refer to the [Axelor Documentation](https://docs.axelor.com).
-
-```
+This README provides clear instructions on setting up and running your Docker Compose application, along with troubleshooting tips and contributing guidelines. You can customize it further based on your specific use case or project details.
