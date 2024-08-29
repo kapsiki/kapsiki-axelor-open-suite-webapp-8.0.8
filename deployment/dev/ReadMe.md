@@ -44,7 +44,7 @@ This guide will help you set up Axelor using Docker. Axelor is an open-source ER
    Once the containers are running, you can access Axelor in your web browser at:
 
    ```
-   http://localhost:8080
+   http://localhost:8080/kapsiki-erp
    ```
 
    The default credentials are:
