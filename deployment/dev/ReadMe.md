@@ -88,13 +88,6 @@ For PostgreSQL logs, use:
 docker-compose logs db
 ```
 
-## Health Checks
-
-The Docker Compose setup includes health checks for both services:
-
-- **PostgreSQL**: Checks if the database is ready to accept connections.
-- **Axelor**: Checks if the application is reachable.
-
 ## Troubleshooting
 
 If the Axelor container keeps restarting, check the logs for error messages:
