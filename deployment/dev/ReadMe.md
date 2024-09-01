@@ -4,8 +4,8 @@ This repository contains a Docker Compose setup for the Kapsiki Axelor ERP appli
 
 ## Prerequisites
 
-- Docker: Ensure you have Docker installed on your machine.
-- Docker Compose: Make sure you have Docker Compose installed.
+- **Docker**: Ensure you have Docker installed on your machine.
+- **Docker Compose**: Make sure you have Docker Compose installed.
 
 ## Getting Started
 
@@ -18,11 +18,33 @@ cd kapsiki-axelor-open-suite-webapp-8.0.8/deployment/dev
 
 ### Configuration
 
-Before starting the services, you may want to customize the environment variables in the `docker-compose.yml` file:
+Before starting the services, you may want to customize the environment variables in the `docker-compose.yml` file. 
 
-- **POSTGRES_DB**: The name of the PostgreSQL database.
-- **POSTGRES_USER**: The username for the PostgreSQL database.
-- **POSTGRES_PASSWORD**: The password for the PostgreSQL user.
+#### PostgreSQL Configuration
+
+- **POSTGRES_DB**: The name of the PostgreSQL database (default: `axelor`).
+- **POSTGRES_USER**: The username for the PostgreSQL database (default: `axelor`).
+- **POSTGRES_PASSWORD**: The password for the PostgreSQL user (default: `axelor`).
+
+#### Axelor Application Configuration
+
+The Axelor application requires specific environment variables for proper database connectivity and configuration:
+
+- **AXELOR_CONFIG_DB_DEFAULT_URL**: This is the JDBC URL that tells Axelor where to find the PostgreSQL database. It must reference the database service defined in the Docker Compose file (e.g., `jdbc:postgresql://db:5432/axelor`). This allows Axelor to connect to the database container seamlessly.
+
+- **AXELOR_CONFIG_DB_DEFAULT_USER**: The username to access the Axelor database. This should match the `POSTGRES_USER` variable.
+
+- **AXELOR_CONFIG_DB_DEFAULT_PASSWORD**: The password for the Axelor database user. This should match the `POSTGRES_PASSWORD` variable.
+
+### Using Local PostgreSQL
+
+If you prefer to use a local instance of PostgreSQL instead of the Dockerized version, you can modify these environment variables accordingly:
+
+1. **Set Local Database Values**:
+   - Change `AXELOR_CONFIG_DB_DEFAULT_URL` to point to your local PostgreSQL instance, e.g., `jdbc:postgresql://localhost:5432/axelor`.
+   - Ensure that the `POSTGRES_USER` and `POSTGRES_PASSWORD` match the credentials of your local PostgreSQL setup.
+
+2. **Remove the Database Service**: If you're using a local PostgreSQL instance, you may want to remove the `db` service from the `docker-compose.yml` file to avoid conflicts.
 
 ### Starting the Services
 
