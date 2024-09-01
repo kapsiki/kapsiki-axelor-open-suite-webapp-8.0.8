@@ -1,4 +1,4 @@
-NAME = kapsiki/kapsiki-erp
+NAME = kapsiki/kapsiki-axelor
 VERSION = latest
 
 .PHONY: all build 
