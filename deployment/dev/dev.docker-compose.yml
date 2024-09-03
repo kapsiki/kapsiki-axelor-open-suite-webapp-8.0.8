@@ -12,11 +12,11 @@ services:
       AXELOR_CONFIG_DB_DEFAULT_PASSWORD: axelor
     ports:
       - "8080:8080"
-    deploy:
-      resources:
-        limits:
-          cpus: "2"
-          memory: "800M"
+    #deploy:
+      #resources:
+        #limits:
+          #cpus: "2"
+          #memory: "800M"
 
   db:
     image: postgres:12
