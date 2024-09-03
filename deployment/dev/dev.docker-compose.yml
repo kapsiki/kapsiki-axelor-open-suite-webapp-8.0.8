@@ -1,17 +1,5 @@
 version: '3.8'
 services:
-  db:
-    image: postgres:12
-    environment:
-      POSTGRES_DB: axelor
-      POSTGRES_USER: axelor
-      POSTGRES_PASSWORD: axelor
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    restart: always
-
   axelor-app:
     image: kapsiki/kapsiki-axelor:latest
     restart: always
@@ -29,6 +17,19 @@ services:
         limits:
           cpus: "2"
           memory: "800M"
+
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_DB: axelor
+      POSTGRES_USER: axelor
+      POSTGRES_PASSWORD: axelor
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    
 volumes:
   postgres_data:
 
