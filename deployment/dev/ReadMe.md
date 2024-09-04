@@ -21,12 +21,12 @@ cd kapsiki-axelor-open-suite-webapp-8.0.8/deployment/dev
 Before starting the services, you may want to customize the environment variables. You can do this by creating a `.env` file in the same directory as your `docker-compose.yml`. Here’s an example `.env` file:
 
 ```env
-POSTGRES_DB=axelor
-POSTGRES_USER=axelor
-POSTGRES_PASSWORD=axelor
-AXELOR_CONFIG_DB_DEFAULT_URL=jdbc:postgresql://db:5432/axelor
-AXELOR_CONFIG_DB_DEFAULT_USER=axelor
-AXELOR_CONFIG_DB_DEFAULT_PASSWORD=axelor
+POSTGRES_DB=xxxx
+POSTGRES_USER=xxxx
+POSTGRES_PASSWORD=axxxx
+AXELOR_CONFIG_DB_DEFAULT_URL=jdbc:postgresql://db:5432/xxxx
+AXELOR_CONFIG_DB_DEFAULT_USER=xxxx
+AXELOR_CONFIG_DB_DEFAULT_PASSWORD=xxxx
 ```
 
 #### PostgreSQL Configuration
