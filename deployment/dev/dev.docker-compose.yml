@@ -13,9 +13,7 @@ services:
     restart: always
 
   axelor-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: kapsiki/kapsiki-axelor:latest
     restart: always
     container_name: axelor-app
     depends_on:
