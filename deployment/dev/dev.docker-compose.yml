@@ -1,13 +1,12 @@
 version: '3.8'
-
 services:
   db:
     image: postgres:12
     container_name: db
     environment:
-      POSTGRES_DB: axelor
-      POSTGRES_USER: axelor
-      POSTGRES_PASSWORD: axelor
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
@@ -21,9 +20,9 @@ services:
     depends_on:
       - db
     environment:
-      AXELOR_CONFIG_DB_DEFAULT_URL: jdbc:postgresql://db:5432/axelor
-      AXELOR_CONFIG_DB_DEFAULT_USER: axelor
-      AXELOR_CONFIG_DB_DEFAULT_PASSWORD: axelor
+      AXELOR_CONFIG_DB_DEFAULT_URL: ${AXELOR_CONFIG_DB_DEFAULT_URL}
+      AXELOR_CONFIG_DB_DEFAULT_USER: ${AXELOR_CONFIG_DB_DEFAULT_USER}
+      AXELOR_CONFIG_DB_DEFAULT_PASSWORD: ${AXELOR_CONFIG_DB_DEFAULT_PASSWORD}
     ports:
       - "8080:8080"
     deploy:
@@ -31,8 +30,5 @@ services:
         limits:
           cpus: "2"
           memory: "5G"
-
 volumes:
   postgres_data:
-
-    
