@@ -25,10 +25,6 @@ services:
       AXELOR_CONFIG_DB_DEFAULT_PASSWORD: ${AXELOR_CONFIG_DB_DEFAULT_PASSWORD}
     ports:
       - "8080:8080"
-    deploy:
-      resources:
-        limits:
-          cpus: "2"
-          memory: "5G"
+      
 volumes:
   postgres_data:
