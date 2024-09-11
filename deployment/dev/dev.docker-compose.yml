@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   db:
     image: postgres:12
@@ -11,7 +12,9 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    restart: always
+    restart: unless-stopped
+    networks:
+      - axelor-network
 
   axelor-app:
     image: kapsiki/kapsiki-axelor:latest
@@ -25,6 +28,15 @@ services:
       AXELOR_CONFIG_DB_DEFAULT_PASSWORD: ${AXELOR_CONFIG_DB_DEFAULT_PASSWORD}
     ports:
       - "8080:8080"
-      
+    networks:
+      - axelor-network
+  
+networks:
+  axelor-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.10.1.0/24
+        
 volumes:
   postgres_data:
