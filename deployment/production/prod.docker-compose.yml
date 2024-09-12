@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+  db:
+    image: postgres:12
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: axelor
+      POSTGRES_USER: axelor
+      POSTGRES_PASSWORD: password
+    volumes:
+      - /home/axelor/axelor-db/pgdata:/var/lib/postgresql/data
+    networks:
+      - axelor-network
+
   axelor:
     image: kapsiki/kapsiki-axelor:latest
     build: .
@@ -10,13 +22,18 @@ services:
     environment:
       - NGINX_HOST=localhost
       - NGINX_PORT=443
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=axelor
+      - DB_USER=axelor
+      - DB_PASSWORD=password
     volumes:
-      - ./certs:/etc/nginx/certs:ro                
-      - ./volumes/var/lib/postgresql:/var/lib/postgresql  
-      - ./volumes/var/log/postgresql:/var/log/postgresql  
-      - ./volumes/var/lib/tomcat:/var/lib/tomcat        
+      - ./certs:/etc/nginx/certs:ro             
+      - ./volumes/var/lib/tomcat:/var/lib/tomcat       
       - ./volumes/var/log/tomcat:/var/log/tomcat        
     restart: unless-stopped
+    depends_on:
+      - db
     networks:
       - axelor-network
     deploy:
@@ -27,6 +44,7 @@ services:
         reservations:
           cpus: '1.0'
           memory: 2G
+
 
 networks:
   axelor-network:
