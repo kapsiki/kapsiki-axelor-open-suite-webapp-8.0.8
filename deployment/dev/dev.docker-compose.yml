@@ -11,7 +11,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - /home/axelor/axelor-db/pgdata:/var/lib/postgresql/data
     restart: unless-stopped
     networks:
       - axelor-network
@@ -30,13 +30,12 @@ services:
       - "8080:8080"
     networks:
       - axelor-network
-  
+
 networks:
   axelor-network:
     driver: bridge
     ipam:
       config:
         - subnet: 172.10.1.0/24
-        
-volumes:
-  postgres_data:
+
+
