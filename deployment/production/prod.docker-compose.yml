@@ -1,51 +1,57 @@
-version: '3'
+version: '3.8'
 
 services:
   db:
     image: postgres:12
-    restart: unless-stopped
+    container_name: db
     environment:
-      POSTGRES_DB: axelor
-      POSTGRES_USER: axelor
-      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
     volumes:
       - /home/axelor/axelor-db/pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
     networks:
       - axelor-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  axelor:
+  axelor-app:
     image: kapsiki/kapsiki-axelor:latest
-    build: .
-    ports:
-      - "80:80"       
-      - "443:443"     
-    environment:
-      - NGINX_HOST=localhost
-      - NGINX_PORT=443
-      - DB_HOST=postgres
-      - DB_PORT=5432
-      - DB_NAME=axelor
-      - DB_USER=axelor
-      - DB_PASSWORD=password
-    volumes:
-      - ./certs:/etc/nginx/certs:ro             
-      - ./volumes/var/lib/tomcat:/var/lib/tomcat       
-      - ./volumes/var/log/tomcat:/var/log/tomcat        
-    restart: unless-stopped
+    restart: always
+    container_name: axelor-app
     depends_on:
       - db
+    environment:
+      AXELOR_CONFIG_DB_DEFAULT_URL: ${AXELOR_CONFIG_DB_DEFAULT_URL}
+      AXELOR_CONFIG_DB_DEFAULT_USER: ${AXELOR_CONFIG_DB_DEFAULT_USER}
+      AXELOR_CONFIG_DB_DEFAULT_PASSWORD: ${AXELOR_CONFIG_DB_DEFAULT_PASSWORD}
+    ports:
+      - "8080:8080"
     networks:
       - axelor-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f <http://localhost:8080/health>"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     deploy:
       resources:
         limits:
-          cpus: '2.0'
-          memory: 4G
+          cpus: '2'
+          memory: 4096M
         reservations:
-          cpus: '1.0'
-          memory: 2G
-
+          cpus: '1'
+          memory: 2048M
 
 networks:
   axelor-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.10.1.0/24
