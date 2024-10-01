@@ -33,6 +33,7 @@ services:
       AXELOR_CONFIG_DB_DEFAULT_PASSWORD: ${AXELOR_CONFIG_DB_DEFAULT_PASSWORD}
     ports:
       - "8080:8080"
+      - "8444:8443"
     networks:
       - axelor-network
     healthcheck:
