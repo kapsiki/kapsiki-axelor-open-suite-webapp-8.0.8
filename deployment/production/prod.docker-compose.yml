@@ -5,9 +5,9 @@ services:
     image: postgres:12
     container_name: db
     environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: axelor
+      POSTGRES_USER: axelor
+      POSTGRES_PASSWORD: axelor
     ports:
       - "5432:5432"
     volumes:
@@ -28,9 +28,9 @@ services:
     depends_on:
       - db
     environment:
-      AXELOR_CONFIG_DB_DEFAULT_URL: ${AXELOR_CONFIG_DB_DEFAULT_URL}
-      AXELOR_CONFIG_DB_DEFAULT_USER: ${AXELOR_CONFIG_DB_DEFAULT_USER}
-      AXELOR_CONFIG_DB_DEFAULT_PASSWORD: ${AXELOR_CONFIG_DB_DEFAULT_PASSWORD}
+      AXELOR_CONFIG_DB_DEFAULT_URL: jdbc:postgresql://db:5432/axelor
+      AXELOR_CONFIG_DB_DEFAULT_USER: axelor
+      AXELOR_CONFIG_DB_DEFAULT_PASSWORD: axelor
     ports:
       - "8080:8080"
       - "8443:8443"
