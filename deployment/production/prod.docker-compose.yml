@@ -6,10 +6,6 @@ services:
     container_name: db
     env_file:
       - .env
-    #environment:
-     # POSTGRES_DB: ${POSTGRES_DB}
-    #  POSTGRES_USER: ${POSTGRES_USER}
-     # POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
@@ -31,10 +27,6 @@ services:
       - db
     env_file:
       - .env
-    #environment:
-      #AXELOR_CONFIG_DB_DEFAULT_URL: ${AXELOR_CONFIG_DB_DEFAULT_URL}
-      #AXELOR_CONFIG_DB_DEFAULT_USER: ${AXELOR_CONFIG_DB_DEFAULT_USER}
-      #AXELOR_CONFIG_DB_DEFAULT_PASSWORD: ${AXELOR_CONFIG_DB_DEFAULT_PASSWORD}
     ports:
       - "8080:8080"
       #- "8443:8443"
