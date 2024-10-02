@@ -4,10 +4,12 @@ services:
   db:
     image: postgres:12
     container_name: db
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file:
+      - .env
+    #environment:
+     # POSTGRES_DB: ${POSTGRES_DB}
+    #  POSTGRES_USER: ${POSTGRES_USER}
+     # POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
@@ -27,13 +29,15 @@ services:
     container_name: axelor-app
     depends_on:
       - db
-    environment:
-      AXELOR_CONFIG_DB_DEFAULT_URL: ${AXELOR_CONFIG_DB_DEFAULT_URL}
-      AXELOR_CONFIG_DB_DEFAULT_USER: ${AXELOR_CONFIG_DB_DEFAULT_USER}
-      AXELOR_CONFIG_DB_DEFAULT_PASSWORD: ${AXELOR_CONFIG_DB_DEFAULT_PASSWORD}
+    env_file:
+      - .env
+    #environment:
+      #AXELOR_CONFIG_DB_DEFAULT_URL: ${AXELOR_CONFIG_DB_DEFAULT_URL}
+      #AXELOR_CONFIG_DB_DEFAULT_USER: ${AXELOR_CONFIG_DB_DEFAULT_USER}
+      #AXELOR_CONFIG_DB_DEFAULT_PASSWORD: ${AXELOR_CONFIG_DB_DEFAULT_PASSWORD}
     ports:
       - "8080:8080"
-      - "8443:8443"
+      #- "8443:8443"
     networks:
       - axelor-network
     healthcheck:
@@ -46,8 +50,8 @@ services:
     image: nginx:1.21-alpine  
     container_name: axelor-nginx
     ports:
-      - "8081:80"    
-      - "8444:443"  
+      - "80:80"    
+      - "443:443"  
     volumes:
       - /etc/nginx/sites-available/axelor.conf:/etc/nginx/conf.d/axelor.conf:ro
       - /home/axelor/axelor-certs:/etc/nginx/certs
